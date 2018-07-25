@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "3346fe9e-0f9b-47bf-bc86-cc7eda1eb0b7",
+		"name": "Emailwizard",
+		"description": "Several calls that will help get up to speed with emailwizard.io",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sending email with smtp",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3117ff2a-7510-48c1-a3ec-944c1306aa6d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Api-Key",
+						"value": "{{emailwizard_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"subject\": \"{{subject}}\",\n  \"recipients\": {{recipients}},\n  \"from\": \"{{from}}\",\n  \"template_name\": \"{{template_name}}\",\n  \"payload\": {{payload}},\n  \"smtp_credentials\": {\n    \"domain\": \"{{smtp_domain}}\",\n    \"address\": \"{{smtp_address}}\",\n    \"login\": \"{{smtp_login}}\",\n    \"password\": \"{{smtp_password}}\",\n    \"port\": \"{{smtp_port}}\",\n    \"authentication\": \"{{smtp_authentication}}\"\n  }\n}"
+				},
+				"url": {
+					"raw": "{{emailwizard}}/api/v1/projects/{{project_id}}/templates/send",
+					"host": [
+						"{{emailwizard}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"{{project_id}}",
+						"templates",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sending email with mailgun",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Api-Key",
+						"value": "{{emailwizard_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"subject\": \"{{subject}}\",\n  \"recipients\": {{recipients}},\n  \"from\": \"{{from}}\",\n  \"template_name\": \"{{template_name}}\",\n  \"payload\": {{payload}},\n  \"mailgun_credentials\": {\n    \"domain\": \"{{mailgun_domain}}\",\n    \"api_key\": \"{{mailgun_api_key}}\"\n  }\n}"
+				},
+				"url": {
+					"raw": "{{emailwizard}}/api/v1/projects/{{project_id}}/templates/send",
+					"host": [
+						"{{emailwizard}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"{{project_id}}",
+						"templates",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sending email with sendgrid",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Api-Key",
+						"value": "{{emailwizard_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"subject\": \"{{subject}}\",\n  \"recipients\": {{recipients}},\n  \"from\": \"{{from}}\",\n  \"template_name\": \"{{template_name}}\",\n  \"payload\": {{payload}},\n  \"sendgrid_credentials\": {\n    \"api_key\": \"{{sendgrid_api_key}}\"\n  }\n}"
+				},
+				"url": {
+					"raw": "{{emailwizard}}/api/v1/projects/{{project_id}}/templates/send",
+					"host": [
+						"{{emailwizard}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"{{project_id}}",
+						"templates",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate templates",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Api-Key",
+						"value": "{{emailwizard_api_key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"template_name\": \"{{template_name}}\",\n  \"payload\": {{payload}}\n}"
+				},
+				"url": {
+					"raw": "{{emailwizard}}/api/v1/projects/{{project_id}}/templates/generate",
+					"host": [
+						"{{emailwizard}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"projects",
+						"{{project_id}}",
+						"templates",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
